@@ -3,8 +3,9 @@ import { IPERRow } from './types';
 import MatrixTable from './components/MatrixTable';
 import KnowledgePanel from './components/KnowledgePanel';
 import { generateIPERRows } from './services/geminiService';
-import { downloadExcel } from './utils/export';
+import { downloadExcel, downloadPDF } from './utils/export';
 import { INITIAL_KNOWLEDGE } from './data/regulatoryData';
+import { AREA_OPTIONS, SECTOR_OPTIONS, MONTH_OPTIONS, YEAR_OPTIONS } from './constants';
 
 // Use environment variable or the provided fallback key
 const API_KEY = process.env.API_KEY || 'AIzaSyBQ7l3WyxzIKX9jioyUAR4Sv1P6xqWlpsA';
@@ -16,6 +17,20 @@ const App: React.FC = () => {
   // Initialize with the massive regulatory text
   const [knowledgeBase, setKnowledgeBase] = useState(INITIAL_KNOWLEDGE);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  
+  // State for the "Elabora" field (Multiple selection)
+  // Changed: Empty default to force selection from dropdown
+  const [approvers, setApprovers] = useState<string[]>([]); 
+  // State for the "Area" field (Single selection dropdown)
+  const [area, setArea] = useState<string>(AREA_OPTIONS[0]);
+  // State for the "Sector" field (Single selection dropdown)
+  const [sector, setSector] = useState<string>(SECTOR_OPTIONS[0]);
+  // State for Date and Revision
+  const [month, setMonth] = useState<string>(MONTH_OPTIONS[2]); // Default MAR
+  const [year, setYear] = useState<string>(YEAR_OPTIONS[0]); // Default 2025
+  const [revision, setRevision] = useState<string>("04"); // Default 04
+  // State for Custom Logo
+  const [logo, setLogo] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,16 +130,39 @@ const App: React.FC = () => {
               <i className="fas fa-trash-alt mr-2"></i> Limpiar
             </button>
             <button 
-              onClick={() => downloadExcel(rows)}
+              onClick={() => downloadExcel(rows, approvers, area, sector, month, year, revision, logo)}
               className="px-4 py-2 text-sm text-white bg-green-600 hover:bg-green-700 rounded shadow-sm font-medium"
             >
               <i className="fas fa-file-excel mr-2"></i> Descargar Excel
+            </button>
+            <button 
+              onClick={() => downloadPDF(rows, approvers, area, sector, month, year, revision, logo)}
+              className="px-4 py-2 text-sm text-white bg-red-600 hover:bg-red-700 rounded shadow-sm font-medium"
+            >
+              <i className="fas fa-file-pdf mr-2"></i> Descargar PDF
             </button>
           </div>
         )}
 
         {/* Table Section */}
-        <MatrixTable rows={rows} onDeleteRow={handleDeleteRow} />
+        <MatrixTable 
+          rows={rows} 
+          onDeleteRow={handleDeleteRow} 
+          approvers={approvers}
+          setApprovers={setApprovers}
+          area={area}
+          setArea={setArea}
+          sector={sector}
+          setSector={setSector}
+          month={month}
+          setMonth={setMonth}
+          year={year}
+          setYear={setYear}
+          revision={revision}
+          setRevision={setRevision}
+          logo={logo}
+          setLogo={setLogo}
+        />
 
       </main>
 
