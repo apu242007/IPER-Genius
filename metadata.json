@@ -1,0 +1,5 @@
+{
+  "name": "IPER-Genius Agent",
+  "description": "Agente especialista HSE/SST para la elaboración automatizada de matrices IPER (Identificación de Peligros y Evaluación de Riesgos) según normativa argentina e ISO 45001.",
+  "requestFramePermissions": []
+}
