@@ -31,6 +31,10 @@ const App: React.FC = () => {
   const [revision, setRevision] = useState<string>("04"); // Default 04
   // State for Custom Logo
   const [logo, setLogo] = useState<string | null>(null);
+  
+  // State for Process and Main Activity (Editable)
+  const [processVal, setProcessVal] = useState<string>("Herramientas y Operaciones");
+  const [mainActivity, setMainActivity] = useState<string>("Servicio de Operaciones de Herramientas");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,13 +134,13 @@ const App: React.FC = () => {
               <i className="fas fa-trash-alt mr-2"></i> Limpiar
             </button>
             <button 
-              onClick={() => downloadExcel(rows, approvers, area, sector, month, year, revision, logo)}
+              onClick={() => downloadExcel(rows, approvers, area, sector, month, year, revision, logo, processVal, mainActivity)}
               className="px-4 py-2 text-sm text-white bg-green-600 hover:bg-green-700 rounded shadow-sm font-medium"
             >
               <i className="fas fa-file-excel mr-2"></i> Descargar Excel
             </button>
             <button 
-              onClick={() => downloadPDF(rows, approvers, area, sector, month, year, revision, logo)}
+              onClick={() => downloadPDF(rows, approvers, area, sector, month, year, revision, logo, processVal, mainActivity)}
               className="px-4 py-2 text-sm text-white bg-red-600 hover:bg-red-700 rounded shadow-sm font-medium"
             >
               <i className="fas fa-file-pdf mr-2"></i> Descargar PDF
@@ -162,6 +166,10 @@ const App: React.FC = () => {
           setRevision={setRevision}
           logo={logo}
           setLogo={setLogo}
+          process={processVal}
+          setProcess={setProcessVal}
+          mainActivity={mainActivity}
+          setMainActivity={setMainActivity}
         />
 
       </main>

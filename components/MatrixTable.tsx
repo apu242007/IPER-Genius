@@ -19,6 +19,10 @@ interface MatrixTableProps {
   setRevision: (val: string) => void;
   logo: string | null;
   setLogo: (val: string | null) => void;
+  process: string;
+  setProcess: (val: string) => void;
+  mainActivity: string;
+  setMainActivity: (val: string) => void;
 }
 
 const MatrixTable: React.FC<MatrixTableProps> = ({ 
@@ -29,7 +33,9 @@ const MatrixTable: React.FC<MatrixTableProps> = ({
   month, setMonth,
   year, setYear,
   revision, setRevision,
-  logo, setLogo
+  logo, setLogo,
+  process, setProcess,
+  mainActivity, setMainActivity
 }) => {
   const tableRef = useRef<HTMLTableElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -84,7 +90,7 @@ const MatrixTable: React.FC<MatrixTableProps> = ({
                ref={fileInputRef} 
                onChange={handleLogoUpload} 
                className="hidden" 
-               accept="image/*"
+               accept="image/png, image/jpeg, image/jpg"
              />
              {logo ? (
                <img src={logo} alt="Logo" className="max-h-12 max-w-full object-contain" />
@@ -207,12 +213,26 @@ const MatrixTable: React.FC<MatrixTableProps> = ({
           {/* Proceso */}
           <div className="flex w-[25%] border-r border-black">
             <div className="w-16 font-bold p-1 flex items-center justify-center bg-white border-r border-black">Proceso</div>
-            <div className="flex-1 p-1 flex items-center font-bold bg-white pl-2">Herramientas y Operaciones</div>
+            <div className="flex-1 p-0 flex items-center font-bold bg-white">
+              <input 
+                  type="text" 
+                  value={process} 
+                  onChange={(e) => setProcess(e.target.value)}
+                  className="w-full h-full px-2 outline-none border-none bg-white font-bold"
+                />
+            </div>
           </div>
           {/* Actividad Principal (Expanded) */}
           <div className="flex w-[60%] border-r border-black">
             <div className="w-32 font-bold p-1 flex items-center justify-center bg-white border-r border-black">Actividad Principal</div>
-            <div className="flex-1 p-1 flex items-center font-bold bg-white pl-2">Servico de Operaciones de Herramientas</div>
+            <div className="flex-1 p-0 flex items-center font-bold bg-white">
+              <input 
+                  type="text" 
+                  value={mainActivity} 
+                  onChange={(e) => setMainActivity(e.target.value)}
+                  className="w-full h-full px-2 outline-none border-none bg-white font-bold"
+                />
+            </div>
           </div>
           {/* Revisión */}
           <div className="flex w-[15%]">

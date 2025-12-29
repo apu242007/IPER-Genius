@@ -2,12 +2,20 @@ import { IPERRow } from "../types";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
-export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null) => {
+// Helper to get image format from base64 string
+const getImageFormat = (dataUrl: string): string => {
+  if (dataUrl.startsWith("data:image/jpeg") || dataUrl.startsWith("data:image/jpg")) return "JPEG";
+  if (dataUrl.startsWith("data:image/png")) return "PNG";
+  return "PNG"; // Default fallback
+};
+
+export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null, process: string, mainActivity: string) => {
   // Styles
   const borderStyle = 'border: 1px solid black;';
   const yellowHeader = 'background-color: #FFFACD; ' + borderStyle + ' font-weight: bold; text-align: center; vertical-align: middle;';
   const centerStyle = borderStyle + ' text-align: center; vertical-align: top;';
   const leftStyle = borderStyle + ' text-align: left; vertical-align: top; white-space: pre-wrap;';
+  const labelStyle = borderStyle + ' font-weight: bold; background-color: #f0f0f0; width: 100px;';
   
   // Format approvers string
   const approversString = approvers && approvers.length > 0 ? approvers.join(' / ') : '';
@@ -23,38 +31,52 @@ export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string
       }
   };
   
-  // Logo content: Image tag or Text
+  // Logo content: Image tag or Text. 
+  // NOTE: Base64 images in HTML-Excel are sometimes blocked by Excel security settings. 
+  // We use standard img tag with dimensions.
   const logoContent = logo 
-    ? `<img src="${logo}" width="100" height="40" alt="Logo" style="display:block; margin:auto;"/>` 
-    : `TACKER`;
+    ? `<img src="${logo}" width="120" height="50" alt="Logo" style="display:block; margin:auto;"/>` 
+    : `<span style="font-size: 20px; color: red; font-weight: bold;">TACKER</span>`;
 
-  // Document Info Header (Merged Cells approximation for Excel)
+  // Document Info Header (Improved Layout to avoid overlap)
+  // We use specific widths to ensure Excel renders columns reasonably
   const docHeader = `
-    <tr>
-      <td colspan="4" style="${borderStyle} color: red; font-size: 16px; font-weight: bold; font-style: italic; text-align: center; vertical-align: middle; height: 50px;">
+    <tr style="height: 60px;">
+      <td colspan="4" style="${borderStyle} text-align: center; vertical-align: middle;">
         ${logoContent}
       </td>
-      <td colspan="12" style="${borderStyle} font-size: 14px; font-weight: bold; text-align: center; vertical-align: middle;">MATRIZ DE IDENTIFICACIÓN DE PELIGROS Y EVALUACIÓN DE RIESGOS</td>
-      <td colspan="4" style="${borderStyle} font-weight: bold; text-align: center; vertical-align: middle;">PGTAC008-A1-2</td>
+      <td colspan="12" style="${borderStyle} font-size: 18px; font-weight: bold; text-align: center; vertical-align: middle; background-color: white;">MATRIZ DE IDENTIFICACIÓN DE PELIGROS Y EVALUACIÓN DE RIESGOS</td>
+      <td colspan="4" style="${borderStyle} font-size: 14px; font-weight: bold; text-align: center; vertical-align: middle;">PGTAC008-A1-2</td>
     </tr>
-    <tr>
-      <td style="${borderStyle} font-weight: bold;">Area</td>
-      <td colspan="5" style="${borderStyle} font-weight: bold; background-color: #00B0F0;">${area}</td>
-      <td style="${borderStyle} font-weight: bold;">Sector</td>
-      <td colspan="5" style="${borderStyle}">${sector}</td>
-      <td style="${borderStyle} font-weight: bold;">Elabora</td>
-      <td colspan="4" style="${borderStyle} font-weight: bold;">${approversString}</td>
-      <td style="${borderStyle} font-weight: bold; background-color: #D3D3D3;">Actualizada</td>
-      <td style="${borderStyle} font-weight: bold; text-align: center;">${month}</td>
-      <td style="${borderStyle} font-weight: bold; text-align: center;">${year}</td>
+    
+    <!-- Row 2: Metadata 1 -->
+    <tr style="height: 30px;">
+      <td style="${labelStyle}">Area</td>
+      <td colspan="5" style="${borderStyle} font-weight: bold; background-color: #00B0F0; vertical-align: middle;">${area}</td>
+      
+      <td style="${labelStyle}">Sector</td>
+      <td colspan="5" style="${borderStyle} vertical-align: middle;">${sector}</td>
+      
+      <td style="${labelStyle}">Actualizada</td>
+      <td colspan="3" style="${borderStyle} text-align: center; vertical-align: middle;">${month} / ${year}</td>
+      
+      <td style="${labelStyle}">Revisión</td>
+      <td colspan="2" style="${borderStyle} text-align: center; vertical-align: middle;">${revision}</td>
     </tr>
-    <tr>
-      <td style="${borderStyle} font-weight: bold;">Proceso</td>
-      <td colspan="4" style="${borderStyle} font-weight: bold;">Herramientas y Operaciones</td>
-      <td colspan="3" style="${borderStyle} font-weight: bold;">Actividad Principal</td>
-      <td colspan="9" style="${borderStyle} font-weight: bold;">Servico de Operaciones de Herramientas</td>
-      <td style="${borderStyle} font-weight: bold; background-color: #D3D3D3;">Revisión</td>
-      <td colspan="2" style="${borderStyle} font-weight: bold; text-align: center;">${revision}</td>
+
+    <!-- Row 3: Metadata 2 (Full Width for Elabora to prevent overlap) -->
+    <tr style="height: 30px;">
+      <td style="${labelStyle}">Elabora</td>
+      <td colspan="19" style="${borderStyle} font-weight: bold; vertical-align: middle; flex-wrap: wrap;">${approversString}</td>
+    </tr>
+
+    <!-- Row 4: Process info -->
+    <tr style="height: 30px;">
+      <td style="${labelStyle}">Proceso</td>
+      <td colspan="5" style="${borderStyle} font-weight: bold; vertical-align: middle;">${process}</td>
+      
+      <td style="${labelStyle}">Actividad P.</td>
+      <td colspan="13" style="${borderStyle} font-weight: bold; vertical-align: middle;">${mainActivity}</td>
     </tr>
   `;
 
@@ -170,48 +192,94 @@ export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string
   document.body.removeChild(a);
 };
 
-export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null) => {
+export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null, process: string, mainActivity: string) => {
   const doc = new jsPDF({ orientation: 'landscape', format: 'a4' });
   const pageWidth = doc.internal.pageSize.getWidth();
   const approversString = approvers && approvers.length > 0 ? approvers.join(' / ') : '';
 
-  // --- Document Header (Manual Drawing) ---
-  const startY = 10;
-  const colW = pageWidth / 20; // 20 grid units
-
-  // Row 1
-  if (logo) {
-    doc.addImage(logo, 'PNG', 15, startY + 2, 20, 10);
-  } else {
-    doc.setTextColor(255, 0, 0);
-    doc.setFont("helvetica", "bolditalic");
-    doc.setFontSize(16);
-    doc.text("TACKER", 15, startY + 10);
-  }
+  // Use autoTable for the Header layout to prevent overlap and handle wrapping
   
-  doc.setTextColor(0, 0, 0);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(14);
-  doc.text("MATRIZ DE IDENTIFICACIÓN DE PELIGROS Y EVALUACIÓN DE RIESGOS", pageWidth / 2, startY + 10, { align: 'center' });
-  
-  doc.setFontSize(10);
-  doc.text("PGTAC008-A1-2", pageWidth - 15, startY + 10, { align: 'right' });
+  // 1. Logo and Title Table
+  autoTable(doc, {
+    startY: 10,
+    head: [[
+      { content: '', styles: { minCellWidth: 30 } }, // Logo placeholder
+      { content: 'MATRIZ DE IDENTIFICACIÓN DE PELIGROS Y EVALUACIÓN DE RIESGOS', styles: { halign: 'center', valign: 'middle', fontSize: 14, fontStyle: 'bold' } },
+      { content: 'PGTAC008-A1-2', styles: { halign: 'center', valign: 'middle', fontSize: 10 } }
+    ]],
+    body: [],
+    theme: 'plain',
+    styles: { cellPadding: 2, minCellHeight: 15 },
+    columnStyles: {
+      0: { cellWidth: 40 },
+      1: { cellWidth: 'auto' }, // Takes remaining space
+      2: { cellWidth: 30 }
+    },
+    didDrawCell: (data) => {
+      // Draw Logo in the first cell if it exists and we are in the header row
+      if (data.section === 'head' && data.column.index === 0 && logo) {
+        try {
+            const format = getImageFormat(logo);
+            doc.addImage(logo, format, data.cell.x + 2, data.cell.y + 2, 35, 12);
+        } catch (e) {
+            console.error("Error adding image to PDF", e);
+            // Fallback text if image fails
+            doc.setFontSize(10);
+            doc.setTextColor(255,0,0);
+            doc.text("TACKER", data.cell.x + 5, data.cell.y + 10);
+        }
+      } else if (data.section === 'head' && data.column.index === 0 && !logo) {
+         doc.setFontSize(16);
+         doc.setTextColor(255,0,0);
+         doc.setFont("helvetica", "bolditalic");
+         doc.text("TACKER", data.cell.x + 5, data.cell.y + 10);
+      }
+    }
+  });
 
-  // Draw Lines for Header 1
-  doc.line(10, startY + 15, pageWidth - 10, startY + 15);
+  // 2. Metadata Table (Area, Sector, Elabora, etc.)
+  // We use a table here so text wraps automatically if names are too long
+  autoTable(doc, {
+    startY: (doc as any).lastAutoTable.finalY + 2,
+    body: [
+      [ 
+        { content: 'Area:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } }, 
+        { content: area, styles: { fillColor: [0, 176, 240] } },
+        { content: 'Sector:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } }, 
+        { content: sector },
+        { content: 'Actualizada:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } }, 
+        { content: `${month} / ${year}` } 
+      ],
+      [
+        { content: 'Elabora:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } },
+        { content: approversString, colSpan: 3 }, // Span across middle columns to give space
+        { content: 'Revisión:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } },
+        { content: revision }
+      ],
+      [
+        { content: 'Proceso:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } },
+        { content: process, colSpan: 2 },
+        { content: 'Actividad Principal:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } },
+        { content: mainActivity, colSpan: 2 }
+      ]
+    ],
+    theme: 'grid',
+    styles: { 
+      fontSize: 8, 
+      cellPadding: 1.5,
+      lineColor: [0,0,0],
+      lineWidth: 0.1,
+      valign: 'middle'
+    },
+    columnStyles: {
+      0: { cellWidth: 20 }, // Label
+      2: { cellWidth: 20 }, // Label
+      4: { cellWidth: 20 }, // Label
+      // Values auto-size
+    }
+  });
 
-  // Metadata Section (Simplified text dump for PDF to save complexity vs HTML table)
-  doc.setFontSize(8);
-  doc.text(`Area: ${area}`, 12, startY + 20);
-  doc.text(`Sector: ${sector}`, 80, startY + 20);
-  doc.text(`Elabora: ${approversString}`, 140, startY + 20);
-  doc.text(`Actualizada: ${month}/${year}`, pageWidth - 40, startY + 20);
-
-  doc.text(`Proceso: Herramientas y Operaciones`, 12, startY + 25);
-  doc.text(`Actividad Principal: Servico de Operaciones de Herramientas`, 80, startY + 25);
-  doc.text(`Revisión: ${revision}`, pageWidth - 40, startY + 25);
-  
-  // --- Table Data ---
+  // --- Main Data Table ---
   const tableHead = [
     [
       { content: 'Descripción de la Actividad', rowSpan: 2, styles: { valign: 'middle', halign: 'center' } },
@@ -260,7 +328,7 @@ export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, 
   ]);
 
   autoTable(doc, {
-    startY: startY + 30,
+    startY: (doc as any).lastAutoTable.finalY + 5,
     head: tableHead,
     body: tableBody,
     theme: 'grid',
