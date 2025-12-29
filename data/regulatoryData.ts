@@ -86,197 +86,34 @@ Enfoque basado en procesos.
 --- LISTADOS ESTANDARIZADOS DE PELIGROS Y RIESGOS ---
 
 [02. LISTA DE IDENTIFICACIÓN DE PELIGROS]
-Utilizar estos códigos y descripciones para la identificación de peligros:
+Utilizar ESTRICTAMENTE estos códigos y descripciones (1 al 28) para la identificación de peligros:
 
-1. MECÁNICOS
-1.a. Resbalones y/o caídas al mismo nivel por superficie o terreno resbaladizo, desparejo.
-1.b. Caídas de personas desde altura.
-1.c. Caídas de herramientas, materiales, etc. desde altura.
-1.d. Distancia inadecuada de las estibas hasta el cielorraso.
-1.e. Peligros asociados con la elevación o el manejo manual de herramientas, materiales, etc.
-1.f. Peligros de planta y maquinaria relacionados con el montaje, puesta en servicio, funcionamiento, mantenimiento, modificación, reparación y desmantelamiento.
-1.g. Peligros relacionados con vehículos, que cubran el transporte en planta y en caminos externos (Ej. riesgo de atropellamiento).
-1.h. Golpes, choques o proyecciones de objetos.
-1.i. Pisadas sobre objetos punzantes.
-1.j. Quemaduras por contacto a altas temperaturas.
-
-2. TECNOLÓGICOS Y DE SEGURIDAD
-2.a. Su trabajo requiere uso de EPP.
-2.b. Cuenta con los EPP para su trabajo.
-2.c. Fue capacitado en el uso adecuado de EPP.
-2.d. Conoce las normas de seguridad para la manipulación de materiales peligrosos.
-2.e. Se encuentran señalizados los sectores peligrosos y la obligatoriedad del uso de EPP.
-2.f. Existen duchas de emergencia y/o lavaojos en sectores de productos peligrosos.
-2.g. Ha recibido capacitación sobre los riesgos a los que se expone y cómo protegerse.
-2.h. Sabe cómo actuar en caso de emergencia.
-2.i. Conoce si existe plan de evacuación.
-2.j. Se ha instalado un sistema de iluminación de emergencia en casos necesarios.
-2.k. Están señalizadas las salidas de emergencia.
-2.l. Cuenta el sector con elementos para extinción de incendio.
-2.ll. Se registra el control de recarga de matafuegos.
-2.m. Se encuentran señalizadas las áreas para depósito de materiales.
-2.n. Se identifican los productos riesgosos almacenados.
-2.ñ. Cuentan los productos utilizados con su hoja de seguridad accesible a los trabajadores.
-2.o. Se encuentran demarcadas las áreas de transito y lugares de cruce donde circulen cargas suspendidas.
-2.p. Las herramientas cuentan con las protecciones adecuadas y válvulas de cierre automático al dejar de accionarlas.
-2.q. Aparatos para izar y montacargas: tienen identificación de carga máxima.
-2.r. Aparatos para izar y montacargas: poseen parada de máximo nivel e sobrecarga.
-2.s. Tienen los ganchos de izar traba de seguridad.
-2.t. Reciben los operadores capacitación para uso correcto del equipo de izar.
-2.u. Vehículos: son adecuadas las cabinas de protección para las inclemencias del tiempo.
-2.v. Vehículos: son adecuadas las cabinas de protección para proteger del vuelco y desplazamiento de cargas.
-2.w. Vehículos: están equipados con luces, frenos, dispositivo de aviso acústico y matafuegos.
-2.x. Falta de orden y limpieza.
-2.y. Existen depósitos de residuos metálicos.
-
-3. ELÉCTRICOS
-3.a. Contacto eléctrico directo.
-3.b. Contacto eléctrico indirecto.
-3.c. Electricidad estática.
-
-4. FÍSICOS
-4.a. Ruidos (superior a 85dBA).
-4.b. Iluminación insuficiente.
-4.c. Iluminación que genera resplandor o zonas de sombra que dificultan la tarea.
-4.d. Carga térmica: ambiente muy caluroso (T° superior a 30 °C y actividad física).
-4.e. Carga térmica: ambiente muy frío (T° inferior a 10 °C).
-4.f. Vibraciones de cuerpo entero.
-4.g. Vibraciones transmitidas a miembros superiores por máquinas o herramientas.
-4.h. Ventilación y/o extracción insuficiente.
-4.i. Humedad excesiva y constante.
-
-5. RADIACIÓN
-5.a. Fuentes de radiaciones ionizantes (Rx).
-5.b. Fuentes de radiaciones no ionizantes (arco de soldadura).
-5.c. Láser.
-5.d. Máquinas que utilicen campos electromagnéticos de alta frecuencia.
-
-6. SUSTANCIAS QUÍMICAS
-6.a. Sustancias que puedan ser inhaladas.
-6.b. Sustancias o agentes que puedan dañar la visión.
-6.c. Sustancias que puedan causar daño al entrar en contacto con la piel, o se puedan absorber a través de ella.
-6.d. Sustancias cuya ingestión pueda causar daño (es decir ingresando al cuerpo por la boca).
-
-7. INCENDIO Y EXPLOSIÓN
-7.a. Incendio y explosión de gases.
-7.b. Incendio y explosión de líquidos.
-7.c. Incendio y explosión de sólidos.
-7.d. Incendio y explosión combinados.
-7.e. Incendios eléctricos.
-
-8. BIOLÓGICOS
-8.a. Existen depósito de residuos orgánicos.
-8.b. Cuenta con agua potable para consumo.
-8.c. Cuenta con agua potable para la higiene.
-8.d. Se realizan análisis bacteriológico y físico-químico del agua y limpieza del tanque y red de agua.
-8.e. Dispone de sector apto higiénicamente para alimentación y preparación de alimentos.
-8.f. Existen baños aptos higiénicamente.
-8.g. Se realizan desinfecciones y control de roedores.
-8.h. Recibió vacunación por parte del Dpto. de Medicina del Trabajo.
-
-9. POR FALTA DE ERGONOMÍA
-9.a. Posturas no saludables (muñeca doblada, espalda doblada o rotada, arrodillado, agachado, en cuclillas).
-9.b. Posturas estáticas prolongadas (de pie, sentado, brazos elevados o imposibilitado de cambiar la posición con frecuencia).
-9.c. Esfuerzos excesivos.
-9.d. Consideración inadecuada de la anatomía humana de brazo-mano o pierna-pie (dificultad para operar o alcanzar controles, o para tomar objetos a mas de 40 cm).
-9.e. Movimientos repetitivos (5 o mas ciclos completos x min).
-9.f. Herramientas: el mango es demasiado grande o chico.
-9.g. Herramientas: la forma del mango obliga a doblar la muñeca.
-9.h. Herramientas: se torna muy fría o muy caliente.
-9.i. Manipulación y levantamiento manual de carga (superior a 30kg).
-9.j. Levanta carga por encima de la altura de los hombros.
-9.k. Las cargas son de difícil manipulación (Ej. bolsas, líquidos).
-9.l. Transporta, empuja o arrastra cargas manualmente.
-9.ll. Zócalos, barandas o protecciones inadecuadas de escaleras.
-
-10. PSICOSOCIALES
-10.a. Trabaja habitualmente mas de 8hs.
-10.b. Las pausas para descanso son insuficientes.
-10.c. Tarea demasiado compleja.
-10.d. Tarea monótona.
-10.e. Tarea repetitiva.
-10.f. Tarea en ambiente aislado.
-10.g. Sus tarea requiere atención al público.
-10.h. Trabaja a turnos.
-10.i. Realiza trabajo nocturno.
-10.j. Existen problemas de comunicación en el sector.
-10.k. Existen problemas de organización el trabajo.
-10.l. Existen problemas de planificación.
-10.m. Le impiden organizar su propio trabajo.
-10.n. Las tareas que realizan no están acordes a su experiencia y capacidad.
-10.ñ. No le permiten participar o su opinión no es escuchada.
-10.o. Su trabajo no es reconocido por sus superiores o compañeros.
-10.p. Considera que su trabajo podría deteriorar su salud.
-
-11. NATURALES
-11.a. Aluviones.
-11.b. Caídas de rayos.
-11.c. Huracanes.
-11.d. Inundaciones.
-11.e. Terremotos.
-11.f. Tormentas eléctricas.
-11.g. Tornados.
-
-12. OTROS PELIGROS
-12.a. Actividades de contratistas.
-
---- LISTADO DE AGENTES DE RIESGO (DISPOSICIÓN GPyC SRT N° 02/2014) ---
-
-40001 ACEITES MINERALES
-40002 ACIDO CIANHIDRICO
-40003 ACIDO CLORHIDRICO
-40004 ACIDO FLUORHIDRICO
-40005 ACIDO FOSFORICO
-40006 ACIDO MERCAPTOPROPIANICO
-40007 ACIDO NITRICO
-40008 ACIDO PERCLORICO
-40009 ACIDO SULFURICO
-40010 ACRILONITRILO
-40011 ALCOHOL BUTILICO
-40012 ALCOHOL FURFURILICO
-40013 ALCOHOL ISOPROPILICO
-40014 ALCOHOL METILICO
-40015 ALCOHOL PROPILICO
-40016 ALGODÓN
-40017 ALUMINA CALCINADA
-40031 AMIANTO (ASBESTO)
-40019 AMINAS AROMATICAS
-40020 AMONIACO (GAS)
-40021 AMONIOS CUATERNARIOS
-40036 BENCENO
-40040 BROMOXINIL
-40041 BROMURO DE METILO
-40048 CARBON MINERAL
-40049 CEMENTO
-40051 CIANOACRILATOS
-40052 CIANUROS
-40053 CLORO (GAS)
-40161 TALCO
-40164 TETRACLORURO DE CARBONO
-40166 TIOUREA
-40168 TOLUENO
-40169 TOLUEN DIISOCIANATO
-40173 TRICLOROETILENO
-40179 XILENO
-60001 BRUCELLA
-60002 VIRUS DE LA HEPATITIS A
-60003 VIRUS DE LA HEPATITIS B y C
-60004 BACILUS ANTHRACIS
-60005 MYCOBACTERIUM TUBERCULOSIS
-60006 LEPTOSPIRA
-60010 PLASMODIUM (PALUDISMO)
-60012 VIRUS AMARILICOS
-60014 CITOMEGALOVIRUS
-60015 H.I.V
-60018 HANTAVIRUS
-60019 TRYPANOSOMA CRUZI
-80001 CALOR
-80002 PRESION SUPERIOR A LA ESTANDAR
-90001 RUIDO
-90002 RADIACIONES IONIZANTES
-90003 RADIACIONES INFRARROJAS
-90004 RADIACION ULTRAVIOLETA
-90005 RAYOS LASER
-90006 ILUMINACION INSUFICIENTE
-90008 VIBRACIONES DE CUERPO ENTERO
+1. Explosión: Accidentes producidos por un aumento brusco de volumen de una sustancia o por reacciones químicas violentas en un determinado medio. Incluye la rotura de recipientes a presión, la deflagración de nubes de productos inflamables, etc.
+2. Incendio: Accidentes producidos por efectos del fuego o sus consecuencias.
+3. Contactos térmicos: Accidentes debidos a las temperaturas que tienen los objetos que entren en contacto con cualquier parte del cuerpo (se incluyen líquidos o sólidos). Si coincide con el peligro 21 de esta lista, prevalece este último.
+4. Contactos eléctricos: Se incluyen todos los accidentes cuya causa sea la electricidad.
+5. Contactos con sustancias cáusticas o corrosivas: Considera los accidentes por contacto con sustancias y productos que den lugar a lesiones externas y que en su hoja de seguridad estén definidos como cáusticos o corrosivos.
+6. Inhalación, contacto cutáneo o ingestión de sustancias nocivas: Contempla los accidentes debidos a estar en una atmósfera tóxica, o tener contacto cutáneo o a la ingesta de productos nocivos. Se incluyen las asfixias y ahogos. Se exceptúan los peligros que puedan caer en el número 05.
+7. Caídas de personas a distinto nivel: Incluye tanto las caídas de alturas (edificios, andamios, máquinas, vehículos, etc.) como en profundidades (puentes, excavaciones, aberturas de tierra, piletas, etc.).
+8. Caídas de personas al mismo nivel: Incluye caídas en lugares de paso o superficies de trabajo que ocurren al mismo nivel, es decir desde la superficie donde se produce la caída hasta la superficie donde cae la persona no existe diferencia de altura.
+9. Caídas de objetos por desplome: Incluye el desplome de edificios, muros, andamios, escaleras, mercancías apiladas, etc., así como los hundimientos de masas de tierra, rocas, aludes, etc.
+10. Caídas de objetos en manipulación: Incluye las caídas de herramientas, materiales, etc., sobre un trabajador, siempre que el accidentado sea la misma persona a la cual le caiga el objeto que estaba manipulando.
+11. Caídas de objetos desprendidos: Incluye las caídas de herramientas, materiales, etc. encima un trabajador, siempre que éste no los estuviera manipulando.
+12. Pisadas sobre objetos: Incluye los accidentes que dan lugar a lesiones como consecuencia de pisadas sobre objetos.
+13. Choques contra objetos inmóviles: Incluye los peligros de que el trabajador golpee contra objetos inmóviles.
+14. Choques y contactos contra elementos móviles de la máquina: Incluye los golpes, cortes, rascadas, etc., que el trabajador pueda ocasionarse por elementos móviles de máquinas e instalaciones (no se incluyen los atrapamientos del peligro 18).
+15. Golpes por objetos o herramientas: El trabajador es lesionado por un objeto o herramienta que se mueve por fuerzas diferentes a la de la gravedad. Se incluyen martillazos, golpes con otras herramientas u objetos (maderas, piedras, hierros, etc.) No se incluyen los golpes por caída de objetos.
+16. Atropellos, golpes o choques, contra o con vehículos: Incluye los atropellos de personas por vehículos, así como los accidentes de vehículos en que el trabajador lesionado va sobre el vehículo. No se incluyen los accidentes de tráfico.
+17. Proyección de fragmentos o partículas: Incluye los peligros de proyección sobre el trabajador de partículas o fragmentos voladores procedentes de una máquina o herramienta, voladuras, etc.
+18. Atrapamiento por o entre objetos: Incluye el atrapamiento por elementos de máquinas, diversos materiales, etc.
+19. Atrapamiento por vuelco de máquinas: Incluye los atrapamientos debidos a vuelcos de tractores, vehículos y otras máquinas, quedando el trabajador atrapado por ellos.
+20. Sobreesfuerzos: Incluye peligros originados por la manipulación de cargas o por movimientos mal realizados.
+21. Exposición a temperaturas extremas: Incluye la exposición del trabajador a temperaturas extremas (ambientes excesivamente fríos o calientes) que puedan producirle alteraciones fisiológicas.
+22. Exposición a radiaciones: Incluye la exposición del trabajador tanto variables físico-químicas dañinas: radiaciones ionizantes, radiaciones no ionizantes, otras.
+23. Causados por seres vivos: Incluye los peligros asociados a posibles interacciones con personas o animales, ya sean agresiones, molestias, mordeduras, picaduras, etc.
+24. Accidentes de tráfico: Incluye los accidentes de tráfico ocurridos dentro del horario laboral independientemente que sea su trabajo habitual o no.
+25. Agentes químicos: Están constituidos por materia inerte (no viva) que puede estar presente en el aire bajo diferentes formas: polvo, gas, vapor, niebla, etc. Considera la condición de trabajo como situación presente y habitual en el entorno laboral y no a la posibilidad de accidente por inhalación, contacto o ingestión de químicos (esta última deberá encuadrarse en los peligros 05 y 06 según corresponda). Para su evaluación se tendrán en cuenta las mediciones y estudios respectivos.
+26. Agentes físicos: Están constituidos por las diversas formas en que se manifiesta la energía, tal como el ruido, las vibraciones, carga térmica, iluminación, etc. Considera la condición de trabajo como situación presente y habitual en el entorno laboral y no a la posibilidad de accidente por algún agente físico (esta última deberá encuadrarse en los peligros 21 o 22 según corresponda). Para su evaluación se tendrán en cuenta las mediciones y estudios respectivos.
+27. Agentes biológicos: están constituídos por seres vivos microscópicos, tal como vírus, bactérias, hongos o parasitos, etc. Para su evaluación se tendrán en cuenta las mediciones y estudios respectivos.
+28. Otros: Cualquier otro tipo de peligro no contemplado en los apartados anteriores, tales como: Choque eléctrico por caída de rayo, etc., Asfixia por inmersión: ahogamiento por caída al agua en mares, lagos, cruzando ríos o lagunas, etc., Aspectos Ergonómicos: diseños fuera estándar, Sensibilidades especiales: el grupo evaluador, con el apoyo y las indicaciones del Servicio Médico, deben identificar aquellos factores y sensibilidades propios del puesto de trabajo y que deben requerir medidas de prevención y precaución especiales para ciertas personas, Agentes Psicosociales: Presión, stress, fatiga, rutina, vida en campamentos, etc.
 `;

@@ -9,7 +9,7 @@ const iperSchema: Schema = {
     properties: {
       activity: { type: Type.STRING, description: "Descripción de la actividad" },
       isRoutine: { type: Type.BOOLEAN, description: "true si es TR, false si es TNR" },
-      hazard: { type: Type.STRING, description: "Identificación de Peligros. FORMATO OBLIGATORIO: 'Categoría: Código Descripción'. Ej: '1. Mecánicos: 1.b. Caídas de personas desde altura'." },
+      hazard: { type: Type.STRING, description: "Identificación de Peligros. FORMATO OBLIGATORIO: 'N°. [Nombre del Peligro]: [Descripción]'. Ej: '7. Caídas de personas a distinto nivel: Incluye tanto las caídas de alturas...'." },
       riskDescription: { type: Type.STRING, description: "Descripción de Riesgos (evento + consecuencia)" },
       probInitial: { type: Type.STRING, enum: ["B", "M", "A"], description: "B (Baja), M (Media), A (Alta)" },
       sevInitial: { type: Type.STRING, enum: ["L", "M", "G"], description: "L (Leve), M (Moderado), G (Grave)" },
@@ -52,13 +52,12 @@ export const generateIPERRows = async (
        - Ignora cualquier protocolo COVID. Céntrate exclusivamente en riesgos de seguridad, higiene industrial y ergonomía.
 
     1. **COLUMNA "IDENTIFICACIÓN DE PELIGROS" (FORMATO ESTRICTO)**:
-       - Debes utilizar EXCLUSIVAMENTE la terminología del listado "02. LISTA DE IDENTIFICACIÓN DE PELIGROS" proporcionado en los conocimientos.
-       - **FORMATO OBLIGATORIO**: "[NOMBRE DE CATEGORÍA]: [CÓDIGO] [DESCRIPCIÓN]"
-       - Debes incluir explícitamente la categoría antes del peligro.
+       - Debes utilizar EXCLUSIVAMENTE la terminología del listado "02. LISTA DE IDENTIFICACIÓN DE PELIGROS" (Items 1 al 28) proporcionado en los conocimientos.
+       - **FORMATO OBLIGATORIO**: "[N°]. [NOMBRE DEL PELIGRO]: [DESCRIPCIÓN]"
        - **Ejemplos Correctos**: 
-         - "1. Mecánicos: 1.b. Caídas de personas desde altura".
-         - "3. Eléctricos: 3.a. Contacto eléctrico directo".
-         - "9. Por falta de ergonomía: 9.b. Posturas estáticas prolongadas...".
+         - "7. Caídas de personas a distinto nivel: Incluye tanto las caídas de alturas...".
+         - "4. Contactos eléctricos: Se incluyen todos los accidentes cuya causa sea la electricidad.".
+         - "20. Sobreesfuerzos: Incluye peligros originados por la manipulación de cargas...".
 
     2. **COLUMNAS DE VALORACIÓN (SOLO SIGLAS)**:
        - **Probabilidad (P)**: Usa SOLO la letra **B** (Baja), **M** (Media), **A** (Alta).
@@ -105,7 +104,7 @@ export const generateIPERRows = async (
 
     TU TAREA:
     Analiza la solicitud: "${userPrompt}". 
-    Desglosa la actividad, identifica peligros usando el formato "Categoría: Peligro", calcula riesgos usando SIGLAS (B, M, A / L, M, G) y genera controles y documentación legal COMPLETOS y DETALLADOS.
+    Desglosa la actividad, identifica peligros usando el formato "N°. Nombre: Descripción", calcula riesgos usando SIGLAS (B, M, A / L, M, G) y genera controles y documentación legal COMPLETOS y DETALLADOS.
   `;
 
   try {
