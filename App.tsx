@@ -7,8 +7,8 @@ import { downloadExcel, downloadPDF } from './utils/export';
 import { INITIAL_KNOWLEDGE } from './data/regulatoryData';
 import { AREA_OPTIONS, SECTOR_OPTIONS, MONTH_OPTIONS, YEAR_OPTIONS } from './constants';
 
-// Use environment variable or the provided fallback key
-const API_KEY = process.env.API_KEY || 'AIzaSyBQ7l3WyxzIKX9jioyUAR4Sv1P6xqWlpsA';
+// Use environment variable - never hardcode API keys
+const API_KEY = import.meta.env.VITE_API_KEY || '';
 
 const App: React.FC = () => {
   const [rows, setRows] = useState<IPERRow[]>([]);
@@ -40,14 +40,19 @@ const App: React.FC = () => {
     e.preventDefault();
     if (!input.trim()) return;
 
+    if (!API_KEY) {
+      alert("Error: API Key no configurada. Por favor configura VITE_API_KEY en tus variables de entorno.");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const newRows = await generateIPERRows(API_KEY, input, knowledgeBase);
       setRows(prev => [...prev, ...newRows]);
       setInput('');
     } catch (error) {
-      alert("Error al generar la matriz. Verifica la conexión o intenta de nuevo.");
-      console.error(error);
+      const errorMessage = error instanceof Error ? error.message : "Error desconocido";
+      alert(`Error al generar la matriz: ${errorMessage}. Verifica la conexión o intenta de nuevo.`);
     } finally {
       setIsLoading(false);
     }

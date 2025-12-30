@@ -153,8 +153,10 @@ export const generateIPERRows = async (
     });
 
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    throw error;
+    if (error instanceof Error) {
+      throw new Error(`Gemini API Error: ${error.message}`);
+    }
+    throw new Error("Error desconocido al comunicarse con Gemini API");
   }
 };
 

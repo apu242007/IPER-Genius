@@ -2,6 +2,13 @@ import { IPERRow } from "../types";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
+// Type for jsPDF with autoTable extension
+interface jsPDFWithAutoTable extends jsPDF {
+  lastAutoTable?: {
+    finalY: number;
+  };
+}
+
 // Helper to get image format from base64 string
 const getImageFormat = (dataUrl: string): string => {
   if (dataUrl.startsWith("data:image/jpeg") || dataUrl.startsWith("data:image/jpg")) return "JPEG";
@@ -193,7 +200,7 @@ export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string
 };
 
 export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null, process: string, mainActivity: string) => {
-  const doc = new jsPDF({ orientation: 'landscape', format: 'a4' });
+  const doc = new jsPDF({ orientation: 'landscape', format: 'a4' }) as jsPDFWithAutoTable;
   const pageWidth = doc.internal.pageSize.getWidth();
   const approversString = approvers && approvers.length > 0 ? approvers.join(' / ') : '';
 
@@ -221,8 +228,7 @@ export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, 
         try {
             const format = getImageFormat(logo);
             doc.addImage(logo, format, data.cell.x + 2, data.cell.y + 2, 35, 12);
-        } catch (e) {
-            console.error("Error adding image to PDF", e);
+        } catch {
             // Fallback text if image fails
             doc.setFontSize(10);
             doc.setTextColor(255,0,0);
@@ -240,7 +246,7 @@ export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, 
   // 2. Metadata Table (Area, Sector, Elabora, etc.)
   // We use a table here so text wraps automatically if names are too long
   autoTable(doc, {
-    startY: (doc as any).lastAutoTable.finalY + 2,
+    startY: (doc.lastAutoTable?.finalY ?? 10) + 2,
     body: [
       [ 
         { content: 'Area:', styles: { fontStyle: 'bold', fillColor: [240, 240, 240] } }, 
@@ -328,7 +334,7 @@ export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, 
   ]);
 
   autoTable(doc, {
-    startY: (doc as any).lastAutoTable.finalY + 5,
+    startY: (doc.lastAutoTable?.finalY ?? 10) + 5,
     head: tableHead,
     body: tableBody,
     theme: 'grid',
