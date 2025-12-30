@@ -197,6 +197,8 @@ export const downloadExcel = (rows: IPERRow[], approvers: string[], area: string
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  // Cleanup: revoke object URL to prevent memory leaks
+  window.URL.revokeObjectURL(url);
 };
 
 export const downloadPDF = (rows: IPERRow[], approvers: string[], area: string, sector: string, month: string, year: string, revision: string, logo: string | null, process: string, mainActivity: string) => {
